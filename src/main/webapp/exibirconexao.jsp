@@ -44,7 +44,7 @@ body {
 				<input type="hidden" name="op" value="run">
 				<div class="col-sm-12">
 					<div class="panel panel-info">
-						<div class="panel-heading col-sm-12">Seleção da opção desejada</div>
+						<div class="panel-heading col-sm-12">Opções da aplicação disponíveis para interação com o Banco de Dados Oracle 11g Enterprise</div>
 						<div class="panel-body">
 							<div class="row">
 
@@ -229,7 +229,7 @@ body {
 						else if(consulta.equals(c13))
 							textoResult = "Consula 13 (C13-A1) - Dados que serão modificados na atualização 1. Nesta caso será o telefone";
 						else if(consulta.equals(c14))
-							textoResult = "Consula 14 (C14-A2) - Dados que serão modificados na atualização 2. Nesta caso será a nota";
+							textoResult = "Consula 14 (C14-A2) - Dados que serão modificados na atualização 2. Nesta caso será a nota do aluno de matrícula 2015086743";
 						else if(consulta.equals(c15))
 							textoResult = "Consula 15 (C15-A3) - Dados que serão modificados na atualização 3. Nesta caso será a quantidade de faltas";
 						else textoResult = "algo deu errado";
