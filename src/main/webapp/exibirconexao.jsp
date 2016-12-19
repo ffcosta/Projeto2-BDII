@@ -112,21 +112,21 @@ body {
 											String c14= "SELECT Matricula, nomecomp, nota, statusaluno from TURMAS_SEMESTRE NATURAL JOIN NOTAS_TURMAS NATURAL JOIN PESSOA WHERE CODDISC = 13 AND SEMESTRE = '1' AND ANO = '2016' AND MATRICULA = '2015086743'";
 											String c15 = "select Matricula, NomeComp, horasfaltas, statusaluno from turmas_semestre NATURAL JOIN PESSOA WHERE CODDISC = 141 AND SEMESTRE = '1' AND ANO = '2016' AND MATRICULA = '2014080453'";
 											%>
-											<option	value="<%=c1%>">C1</option>
-											<option value="<%=c2%>">C2</option>
-											<option value="<%=c3%>">C3</option>
-											<option value="<%=c4%>">C4</option>
-											<option value="<%=c5%>">C5</option>
-											<option value="<%=c6%>">C6</option>
-											<option value="<%=c7%>">C7</option>
-											<option value="<%=c8%>">C8</option>
-											<option value="<%=c9%>">C9</option>
-											<option value="<%=c10%>">C10</option>
-											<option value="<%=c11%>">C11</option>
-											<option value="<%=c12%>">C12</option>
-											<option value="<%=c13%>">C13-A1</option>
-											<option value="<%=c14%>">C14-A2</option>
-											<option value="<%=c15%>">C15-A3</option>
+											<option	value="c1">C1</option>
+											<option value="c2">C2</option>
+											<option value="c3">C3</option>
+											<option value="c4">C4</option>
+											<option value="c5">C5</option>
+											<option value="c6">C6</option>
+											<option value="c7">C7</option>
+											<option value="c8">C8</option>
+											<option value="c9">C9</option>
+											<option value="c10">C10</option>
+											<option value="c11">C11</option>
+											<option value="c12">C12</option>
+											<option value="c13">C13-A1</option>
+											<option value="c14">C14-A2</option>
+											<option value="c15">C15-A3</option>
 										</select>
 									</div>
 									<div class="col-sm-2">
@@ -145,13 +145,13 @@ body {
 										<select id="selectbasic" name="selectAtualizar"
 											class="form-control">
 											<%
-											String a1 = "UPDATE TELEFONE_PESSOA SET TELEFONE = '62988891166' WHERE MATRICULA = '2015086743' AND TELEFONE = '6288891166'";
-											String a2 = "UPDATE NOTAS_TURMAS SET NOTA = 8 WHERE CODDISC = 13 AND SEMESTRE = '1' AND ANO = '2016' AND MATRICULA = '2015086743'";
+											String a1 = "UPDATE TELEFONE_PESSOA SET TELEFONE = '6288891166' WHERE MATRICULA = '2015086743' AND TELEFONE = '62988891166'";
+											String a2 = "UPDATE NOTAS_TURMAS SET NOTA = 8.0 WHERE CODDISC = 13 AND SEMESTRE = '1' AND ANO = '2016' AND MATRICULA = '2015086743'";
 											String a3 = "UPDATE TURMAS_SEMESTRE SET HORASFALTAS = 0 WHERE CODDISC = 141 AND SEMESTRE = '1' AND ANO = '2016' AND MATRICULA = '2014080453'";
 											%>
-											<option	value="<%=a1%>">A1</option>
-											<option value="<%=a2%>">A2</option>
-											<option value="<%=a3%>">A3</option>
+											<option	value="a1">A1</option>
+											<option value="a2">A2</option>
+											<option value="a3">A3</option>
 										</select>
 									</div>
 									<div class=" row col-sm-4">
@@ -177,9 +177,45 @@ body {
 						if (botao.equals("1")) {
 							sql = "select * from " + val(request, "selectListar");
 						} else if (botao.equals("2")){
-							sql = val(request, "selectConsultar");
+							if(val(request, "selectConsultar").equals("c1"))
+								sql = c1;
+							else if(val(request, "selectConsultar").equals("c2"))
+								sql = c2;
+							else if(val(request, "selectConsultar").equals("c3"))
+								sql = c3;
+							else if(val(request, "selectConsultar").equals("c4"))
+								sql = c4;
+							else if(val(request, "selectConsultar").equals("c5"))
+								sql = c5;
+							else if(val(request, "selectConsultar").equals("c6"))
+								sql = c6;
+							else if(val(request, "selectConsultar").equals("c7"))
+								sql = c7;
+							else if(val(request, "selectConsultar").equals("c8"))
+								sql = c8;
+							else if(val(request, "selectConsultar").equals("c9"))
+								sql = c9;
+							else if(val(request, "selectConsultar").equals("c10"))
+								sql = c10;
+							else if(val(request, "selectConsultar").equals("c11"))
+								sql = c11;
+							else if(val(request, "selectConsultar").equals("c12"))
+								sql = c12;
+							else if(val(request, "selectConsultar").equals("c13"))
+								sql = c13;
+							else if(val(request, "selectConsultar").equals("c14"))
+								sql = c14;
+							else if(val(request, "selectConsultar").equals("c15"))
+								sql = c15;
+							else sql = c1;
 						} else if (botao.equals("3")){
-							sql = val(request, "selectAtualizar");
+							if(val(request, "selectAtualizar").equals("a1"))
+								sql  = a1;
+							else if(val(request, "selectAtualizar").equals("a2"))
+								sql  = a2;
+							else if(val(request, "selectAtualizar").equals("a3"))
+								sql  = a3;
+							else sql = a1;
 						}
 						
 						else
@@ -202,37 +238,37 @@ body {
 					if(botao.equals("1"))
 						textoResult = "Conteudo da tabela " + val(request, "selectListar");
 					else{
-						if(consulta.equals(c1))
+						if(consulta.equals("c1"))
 							textoResult = "Consula 1 (C1) - Selecionar nome e nota dos alunos que que foram aprovados no X semestre ano Y (Aprovação Nota  >= 6.0). Exemplo: 1º semestre de 2015";
-						else if(consulta.equals(c2))
+						else if(consulta.equals("c2"))
 							textoResult = "Consula 2 (C2) - Selecionar nome, disciplina e quantidade de horas de falta o aluno de matricula X teve no Y semestre de ano Z na disciplina D. Exemplo: 1º semestre 2014, disciplina Arquitetura de Computadores";
-						else if(consulta.equals(c3))
+						else if(consulta.equals("c3"))
 							textoResult = "Consula 3 (C3) - Selecionar matricula nome dos alunos que necessitam de atendimento especial que ingressaram entre os anos de X e Y. Exemplo: nos anos de 2009 e 2010";
-						else if(consulta.equals(c4))
+						else if(consulta.equals("c4"))
 							textoResult = "Consula 4 (C4) - Selecionar a média salarial dos professores agrupados por instituto.";
-						else if(consulta.equals(c5))
+						else if(consulta.equals("c5"))
 							textoResult = "Consula 5 (C5) - Selecionar Cpf, Nome de todas as alunas que cursaram ou cursam o curso X. Exemplo: Curso Sistemas de Informação Codigo 55";
-						else if(consulta.equals(c6))
+						else if(consulta.equals("c6"))
 							textoResult = "Consula 6 (C6) - Selecionar a quantidade de todos os alunos que ingressaram universidade agrupado por curso.";
-						else if(consulta.equals(c7))
+						else if(consulta.equals("c7"))
 							textoResult = "Consula 7 (C7) - Selecionar o nome e data de nascimento dos alunos do curso X. Exemplo: Curso de Medicina";
-						else if(consulta.equals(c8))
+						else if(consulta.equals("c8"))
 							textoResult = "Consula 8 (C8) - Selecionar nome, cpf dos alunos matriculados no curso X, do ano Y até o ano atual. Exemplo: Curso SISTEMAS DE INFORMACAO e data de matricula > 31-12-2013";
-					    else if(consulta.equals(c9))
+					    else if(consulta.equals("c9"))
 							textoResult = "Consula 9 (C9) - Em quais disciplinas os alunos, sob coordenadoria de X foram aprovados  no ano Y, Z semestre na disciplina D? Exemplo: Coordenador ROBERTO TELLES ANTUNES NETO Matricula: 1999103687";
-					    else if(consulta.equals(c10))
+					    else if(consulta.equals("c10"))
 							textoResult = "Consula 10 (C10) - quais alunos, sob coordenadoria de X, tiveram as matrículas trancadas, inclusive a data do trancamento? Exemplo: Coordenador ROBERTO TELLES ANTUNES NETO Matricula: 1999103687";
-						else if(consulta.equals(c11))
+						else if(consulta.equals("c11"))
 							textoResult = "Consula 11 (C11) - quais turmas, sob coordenadoria de X, cadastradas no ano X e semestre Y? Exemplo: Coordenadora ANA RITA DE CASSIA Matricula:  2005017689";
-						else if(consulta.equals(c12))
+						else if(consulta.equals("c12"))
 							textoResult = "Consula 12 (C12) - quais alunos, sob coordenadoria de X, foram reprovados no ano X e semestre Y? Exemplo: Coordenadora ANA RITA DE CASSIA Matricula:  2005017689";
-						else if(consulta.equals(c13))
+						else if(consulta.equals("c13"))
 							textoResult = "Consula 13 (C13-A1) - Dados que serão modificados na atualização 1. Nesta caso será o telefone";
-						else if(consulta.equals(c14))
+						else if(consulta.equals("c14"))
 							textoResult = "Consula 14 (C14-A2) - Dados que serão modificados na atualização 2. Nesta caso será a nota do aluno de matrícula 2015086743";
-						else if(consulta.equals(c15))
+						else if(consulta.equals("c15"))
 							textoResult = "Consula 15 (C15-A3) - Dados que serão modificados na atualização 3. Nesta caso será a quantidade de faltas";
-						else textoResult = "algo deu errado";
+						else textoResult = "resultado";
 					}
 					
 						%>
