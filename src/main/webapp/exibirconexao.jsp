@@ -44,9 +44,7 @@ body {
 				<input type="hidden" name="op" value="run">
 				<div class="col-sm-12">
 					<div class="panel panel-info">
-						<div class="panel-heading col-sm-4">Exibir tabelas</div>
-						<div class="panel-heading col-sm-2">Consultas</div>
-						<div class="panel-heading">Atualização</div>
+						<div class="panel-heading col-sm-12">Seleção da opção desejada</div>
 						<div class="panel-body">
 							<div class="row">
 
@@ -55,8 +53,10 @@ body {
 										<%
 											String selectListar = val(request, "selectListar");
 										%>
+										<legend>Selecionar Tabelas</legend>
 										<select id="selectbasic" name="selectListar"
 											class="form-control">
+											
 											<option value="Endereco">Endereço</option>
 											<option value="Pessoa">Pessoa</option>
 											<option value="Instituto">Instituto</option>
@@ -78,18 +78,21 @@ body {
 
 										</select>
 									</div>
-								</div>
-								<div class="col-sm-1">
+									<div class="col-sm-2">
+								
 									<div class="form-group">
 										<button type="submit" name="executar" value="1"
 											class="btn btn-primary pull-left">Listar</button>
 									</div>
 								</div>
-								<div class="col-sm-1">
+								</div>
+								
+								<div class="col-sm-2">
 									<div class="form-group">
 										<%
 											String selectConsultar = val(request, "selectConsultar");
 										%>
+										<legend>Executar Consultas</legend>
 										<select id="selectbasic" name="selectConsultar"
 											class="form-control">
 											<%
@@ -126,17 +129,19 @@ body {
 											<option value="<%=c15%>">C15-A3</option>
 										</select>
 									</div>
-								</div>
-								<div class="col-sm-2">
+									<div class="col-sm-2">
 									<div class="form-group">
 										<button type="submit" name="executar" value="2"	class="btn btn-primary pull-left">Executar</button>
 									</div>
 								</div>
-								<div class="col-sm-1">
+								</div>
+								
+								<div class="col-sm-2">
 									<div class="form-group">
 										<%
 											String selectAtualizar = val(request, "selectAtualizar");
 										%>
+										<legend>Realizar Atualizações</legend>
 										<select id="selectbasic" name="selectAtualizar"
 											class="form-control">
 											<%
@@ -149,12 +154,13 @@ body {
 											<option value="<%=a3%>">A3</option>
 										</select>
 									</div>
-								</div>
-								<div class=" row col-sm-4">
+									<div class=" row col-sm-4">
 									<div class="form-group">
 									<div class=" row col-sm-3" ><button type="submit" name="executar" value="3"	class="btn btn-primary pull-left">Atualizar</button></div>		
 									</div>
 								</div>
+								</div>
+								
 
 							</div>
 
