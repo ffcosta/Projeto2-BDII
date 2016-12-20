@@ -143,6 +143,8 @@ body {
 								</div>
 								</div>
 								
+							
+								
 								<div class="col-sm-2">
 									<div class="form-group">
 										<%
@@ -168,6 +170,29 @@ body {
 								</div>
 								</div>
 								
+									<div class="col-sm-2">
+									<div class="form-group">
+										<%
+											String selectProcedure = val(request, "selectProcedure");
+										%>
+										<legend>Executar Procedures</legend>
+										<select id="selectbasic" name="selectProcedure"
+											class="form-control">
+											<%
+											String p1 = "CALL AUMENTA_SAL('2005017999')";
+											
+											%>
+											<option	value="p1">P1</option>
+									
+										</select>
+									</div>
+									<div class="col-sm-2">
+									<div class="form-group">
+										<button type="submit" name="executar" value="4"	class="btn btn-primary pull-left">Executar</button>
+									</div>
+								</div>
+								</div>
+								
 
 							</div>
 
@@ -180,7 +205,7 @@ body {
 						String password = "123456";
 						String max = "100";
 						String sql;
-						String botao =  val(request, "executar");
+						String botao =  val(request, "executar"); 
 						if (botao.equals("1")) {
 							sql = "select * from " + val(request, "selectListar");
 						} else if (botao.equals("2")){
@@ -228,6 +253,12 @@ body {
 								sql  = a2;
 							else if(val(request, "selectAtualizar").equals("a3"))
 								sql  = a3;
+							
+							else sql = a1;
+						}else if (botao.equals("4")){
+							if(val(request, "selectProcedure").equals("p1"))
+								sql  = p1;
+							
 							else sql = a1;
 						}
 						
