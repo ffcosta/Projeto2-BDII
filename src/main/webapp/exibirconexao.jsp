@@ -112,6 +112,9 @@ body {
 											String c13 = "select Matricula, NomeComp, telefone from TELEFONE_PESSOA NATURAL JOIN PESSOA WHERE MATRICULA = '2015086743'";
 											String c14= "SELECT Matricula, nomecomp, nota, horasfaltas, statusaluno from TURMAS_SEMESTRE NATURAL JOIN NOTAS_TURMAS NATURAL JOIN PESSOA WHERE CODDISC = 13 AND SEMESTRE = '1' AND ANO = '2016' AND MATRICULA = '2015086743'";
 											String c15 = "select Matricula, NomeComp, horasfaltas, statusaluno from turmas_semestre NATURAL JOIN PESSOA WHERE CODDISC = 141 AND SEMESTRE = '1' AND ANO = '2016' AND MATRICULA = '2014080453'";
+											String c16 ="select get_salario('2011015658') as salario from dual";
+											String c17 = "select get_dtnasc('2011015658') as dataNascimento from dual";
+											String c18 = "select RetornaIdade(get_dtnasc('2012020987')) as idade from dual";
 											%>
 											<option	value="c1">C1</option>
 											<option value="c2">C2</option>
@@ -128,6 +131,9 @@ body {
 											<option value="c13">C13-A1</option>
 											<option value="c14">C14-A2</option>
 											<option value="c15">C15-A3</option>
+											<option value="c16">C16-F1</option>
+											<option value="c17">C17-F2</option>
+											<option value="c18">C17-F3</option>
 										</select>
 									</div>
 									<div class="col-sm-2">
@@ -208,6 +214,12 @@ body {
 								sql = c14;
 							else if(val(request, "selectConsultar").equals("c15"))
 								sql = c15;
+							else if(val(request, "selectConsultar").equals("c16"))
+								sql = c16;
+							else if(val(request, "selectConsultar").equals("c17"))
+								sql = c17;
+							else if(val(request, "selectConsultar").equals("c18"))
+								sql = c18;
 							else sql = c1;
 						} else if (botao.equals("3")){
 							if(val(request, "selectAtualizar").equals("a1"))
@@ -269,6 +281,12 @@ body {
 							textoResult = "Consula 14 (C14-A2) - Dados que serão modificados na atualização 2. Nesta caso será a nota do aluno de matrícula 2015086743";
 						else if(consulta.equals("c15"))
 							textoResult = "Consula 15 (C15-A3) - Dados que serão modificados na atualização 3. Nesta caso será a quantidade de faltas";
+						else if(consulta.equals("c16"))
+							textoResult = "Consula 16 (C16-F1) - Consulta executada com uso da funação F1 'SELECT get_salario('2011015658') as salario FROM dual;'. Neste caso retorna o salario do técnico adm de matricula 2011015658.";
+						else if(consulta.equals("c17"))
+							textoResult = "Consula 17 (C17-F2) - Consulta executada com uso da funação F2 'SELECT get_dtnasc('2011015658') as dataNascimento FROM dual;'. Neste caso retorna a data de nascimento da pessoa de matricula 2011015658.";
+							else if(consulta.equals("c18"))
+								textoResult = "Consula 18 (C18-F3) - Consulta executada com uso da funação F3 que tem como parâmetro o retorno da function F2 'SELECT RetornaIdade(get_dtnasc('2012020987')) as idade FROM dual;'. Neste caso retorna à idade da pessoa de matricula 2012020987.";
 						else textoResult = "resultado";
 					}
 					
