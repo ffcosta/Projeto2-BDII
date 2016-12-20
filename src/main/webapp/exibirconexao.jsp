@@ -44,7 +44,7 @@ body {
 				<input type="hidden" name="op" value="run">
 				<div class="col-sm-12">
 					<div class="panel panel-info">
-						<div class="panel-heading col-sm-12">Opções da aplicação disponíveis para interação com o Banco de Dados Oracle 11g Enterprise</div>
+						<div class="panel-heading col-sm-12">Opções da aplicação disponíveis para interação com o Banco de Dados Oracle 11g Enterprise Edtion</div>
 						<div class="panel-body">
 							<div class="row">
 
@@ -74,6 +74,7 @@ body {
 											<option value="sala_turma">Sala turma</option>
 											<option value="turmas_semestre">Turmas semestre</option>
 											<option value="notas_turmas">Notas turmas</option>
+											<option value="TURMAS_LOG">turmas log</option>
 
 
 										</select>
@@ -103,13 +104,13 @@ body {
 											String c5 = "SELECT  DISTINCT Cpf, NomeComp, NomeCurso FROM PESSOA NATURAL JOIN ALUNO NATURAL JOIN CURSO Where CODC = 055 and sexo = 'F'";
 											String c6 = "SELECT NomeCurso, Count(Cpf) as QtdeTotal FROM PESSOA NATURAL JOIN ALUNO NATURAL JOIN CURSO GROUP BY NomeCurso";
 											String c7 = "SELECT NomeComp, NomeCurso, Dt_Nasc FROM PESSOA NATURAL JOIN ALUNO NATURAL JOIN CURSO WHERE NomeCurso = 'MEDICINA'";
-											String c8 = "SELECT NomeComp, Cpf, NomeCurso FROM PESSOA NATURAL JOIN ALUNO NATURAL JOIN CURSO WHERE NomeCurso = 'SISTEMAS DE INFORMACAO' AND DtMat > '31-12-2013'";
+											String c8 = "SELECT Matricula, NomeComp, Cpf, NomeCurso, dtmat FROM PESSOA NATURAL JOIN ALUNO NATURAL JOIN CURSO WHERE NomeCurso = 'SISTEMAS DE INFORMACAO' AND DtMat > '31-12-2013'";
 											String c9 = "SELECT DISTINCT NomeComp, NomeDisc, Semestre, Ano, Nota, StatusAluno FROM NOTAS_TURMAS NATURAL JOIN PESSOA NATURAL JOIN TURMAS_SEMESTRE NATURAL JOIN DISCIPLINA NATURAL JOIN CURSO WHERE CURSO.MATCOOR = '1999103687' AND SEMESTRE = '2' AND ANO = 2005 AND NomeDisc = 'Arquitetura de Computadores'";
 											String c10 = "SELECT NomeComp, NomeCurso, SituacaoGrad, DtMudancaSit FROM GRADUACAO NATURAL JOIN PESSOA NATURAL JOIN CURSO WHERE MATCOOR = '1999103687' AND SituacaoGrad = 'Trancada'";
 											String c11 = "SELECT NomeDisc, Semestre, Ano FROM TURMAS_SEMESTRE NATURAL JOIN DISCIPLINA NATURAL JOIN GRADE_CURRICULAR NATURAL JOIN CURSO WHERE MATCOOR = '2005017689' AND SEMESTRE = '1' AND ANO = 2012";
 											String c12 = "SELECT NomeComp, NomeDisc, Semestre, Ano, StatusAluno FROM PESSOA NATURAL JOIN ALUNO NATURAL JOIN TURMAS_SEMESTRE NATURAL JOIN DISCIPLINA NATURAL JOIN GRADE_CURRICULAR NATURAL JOIN CURSO WHERE MATCOOR = '2005017689' AND SEMESTRE = '2' AND ANO = 2014 AND StatusAluno = 'Reprovado'";
 											String c13 = "select Matricula, NomeComp, telefone from TELEFONE_PESSOA NATURAL JOIN PESSOA WHERE MATRICULA = '2015086743'";
-											String c14= "SELECT Matricula, nomecomp, nota, statusaluno from TURMAS_SEMESTRE NATURAL JOIN NOTAS_TURMAS NATURAL JOIN PESSOA WHERE CODDISC = 13 AND SEMESTRE = '1' AND ANO = '2016' AND MATRICULA = '2015086743'";
+											String c14= "SELECT Matricula, nomecomp, nota, horasfaltas, statusaluno from TURMAS_SEMESTRE NATURAL JOIN NOTAS_TURMAS NATURAL JOIN PESSOA WHERE CODDISC = 13 AND SEMESTRE = '1' AND ANO = '2016' AND MATRICULA = '2015086743'";
 											String c15 = "select Matricula, NomeComp, horasfaltas, statusaluno from turmas_semestre NATURAL JOIN PESSOA WHERE CODDISC = 141 AND SEMESTRE = '1' AND ANO = '2016' AND MATRICULA = '2014080453'";
 											%>
 											<option	value="c1">C1</option>
@@ -145,9 +146,9 @@ body {
 										<select id="selectbasic" name="selectAtualizar"
 											class="form-control">
 											<%
-											String a1 = "UPDATE TELEFONE_PESSOA SET TELEFONE = '6288891166' WHERE MATRICULA = '2015086743' AND TELEFONE = '62988891166'";
+											String a1 = "UPDATE TELEFONE_PESSOA SET TELEFONE = '62988891166' WHERE MATRICULA = '2015086743' AND TELEFONE = '6288891166'";
 											String a2 = "UPDATE NOTAS_TURMAS SET NOTA = 8.0 WHERE CODDISC = 13 AND SEMESTRE = '1' AND ANO = '2016' AND MATRICULA = '2015086743'";
-											String a3 = "UPDATE TURMAS_SEMESTRE SET HORASFALTAS = 0 WHERE CODDISC = 141 AND SEMESTRE = '1' AND ANO = '2016' AND MATRICULA = '2014080453'";
+											String a3 = "UPDATE TURMAS_SEMESTRE SET HORASFALTAS = 14 WHERE CODDISC = 141 AND SEMESTRE = '1' AND ANO = '2016' AND MATRICULA = '2014080453'";
 											%>
 											<option	value="a1">A1</option>
 											<option value="a2">A2</option>
