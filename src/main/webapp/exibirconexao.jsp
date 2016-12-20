@@ -115,6 +115,7 @@ body {
 											String c16 ="select get_salario('2011015658') as salario from dual";
 											String c17 = "select get_dtnasc('2011015658') as dataNascimento from dual";
 											String c18 = "select RetornaIdade(get_dtnasc('2012020987')) as idade from dual";
+											String c19 = "select matricula, NomeComp, salario from professor NATURAL JOIN PESSOA where matricula = '2005017999'";
 											%>
 											<option	value="c1">C1</option>
 											<option value="c2">C2</option>
@@ -134,6 +135,7 @@ body {
 											<option value="c16">C16-F1</option>
 											<option value="c17">C17-F2</option>
 											<option value="c18">C17-F3</option>
+											<option value="c19">C19-P1</option>
 										</select>
 									</div>
 									<div class="col-sm-2">
@@ -245,6 +247,8 @@ body {
 								sql = c17;
 							else if(val(request, "selectConsultar").equals("c18"))
 								sql = c18;
+							else if(val(request, "selectConsultar").equals("c19"))
+								sql = c19;
 							else sql = c1;
 						} else if (botao.equals("3")){
 							if(val(request, "selectAtualizar").equals("a1"))
@@ -318,6 +322,8 @@ body {
 							textoResult = "Consula 17 (C17-F2) - Consulta executada com uso da funação F2 'SELECT get_dtnasc('2011015658') as dataNascimento FROM dual;'. Neste caso retorna a data de nascimento da pessoa de matricula 2011015658.";
 							else if(consulta.equals("c18"))
 								textoResult = "Consula 18 (C18-F3) - Consulta executada com uso da funação F3 que tem como parâmetro o retorno da function F2 'SELECT RetornaIdade(get_dtnasc('2012020987')) as idade FROM dual;'. Neste caso retorna à idade da pessoa de matricula 2012020987.";
+							else if(consulta.equals("c19"))
+								textoResult = "Consula 19 (C19-P1) - Dados que serão modificados na procedure 1. Nesta caso será o aumento de salário da professora de matrícula '2005017999'";
 						else textoResult = "resultado";
 					}
 					
